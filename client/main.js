@@ -15,12 +15,12 @@ import UserCollectionGrid from './components/UserCollectionGrid'
 import { Provider } from 'react-redux';
 
 // import store
-import store from './store';
+import store, { history } from './store';
 
 
 const router = (
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={CollectionGrid}></IndexRoute>
         <Route path="/users/:userId" component={ UserProfile }></Route>

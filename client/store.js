@@ -1,11 +1,26 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { syncHistoryWithStore } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 import promise from 'redux-promise-middleware';
 
 import reducer from './reducers';
+//
+// const defaultState = {
+//   collections: []
+// };
 
-const middleware = applyMiddleware(promise(), thunk, logger());
+const enhancers = compose(
+  applyMiddleware(promise(), thunk, logger()),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
 
-export default createStore(reducer, middleware);
+// const middleware =
+
+const store = createStore(reducer, enhancers);
+
+export const history = syncHistoryWithStore(browserHistory, store);
+
+export default store;

@@ -7,14 +7,29 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
 import collections from './data/collections';
 import CollectionGrid from './components/CollectionGrid'
+import SearchBar from './components/SearchBar'
+
 
 class App extends React.Component {
+  //store collection we are finding
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      collections: []
+    }
+  }
+
+  collectionSearch(term) {
+    console.log(term)
+  }
 
   render() {
     return (
       <MuiThemeProvider>
         <div>
           <Navbar />
+          <SearchBar onSearchTermChange={term=>this.collectionSearch(term)}/>
           <CollectionGrid collections={collections} />
 
         </div>

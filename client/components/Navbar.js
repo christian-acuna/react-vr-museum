@@ -56,7 +56,7 @@ class Navbar extends Component {
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           style={{backgroundColor: '#EA4E4E'}}
           onLeftIconButtonTouchTap={this.handleToggle}
-          // iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
         <Drawer open={this.state.open}>
           <AppBar title='AppBar' onTouchTap={this.handleClose} />

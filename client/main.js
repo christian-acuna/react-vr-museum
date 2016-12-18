@@ -5,13 +5,19 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Navbar from './components/Navbar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 injectTapEventPlugin();
+import collections from './data/collections';
+import CollectionGrid from './components/CollectionGrid'
 
 class App extends React.Component {
 
   render() {
     return (
       <MuiThemeProvider>
-        <Navbar />
+        <div>
+          <Navbar />
+          <CollectionGrid collections={collections} />
+
+        </div>
       </MuiThemeProvider>
     );
   }

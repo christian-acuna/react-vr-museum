@@ -1,23 +1,33 @@
-// let's go!
+// React
 import React from 'react';
 import { render } from 'react-dom';
+
+// React Router
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+// Components
 import App from './components/App';
-import collections from './data/collections';
 import CollectionGrid from './components/CollectionGrid';
 import UserProfile from './components/UserProfile';
 import UserCollectionGrid from './components/UserCollectionGrid'
 
+//react-redux
+import { Provider } from 'react-redux';
+
+// import store
+import store from './store';
 
 
 const router = (
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={CollectionGrid}></IndexRoute>
-      <Route path="/users/:userId" component={ UserProfile }></Route>
-      <Route path="/users/:userId/collections/:collectionId" component={ UserCollectionGrid }></Route>
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={CollectionGrid}></IndexRoute>
+        <Route path="/users/:userId" component={ UserProfile }></Route>
+        <Route path="/users/:userId/collections/:collectionId" component={ UserCollectionGrid }></Route>
+      </Route>
+    </Router>
+  </Provider>
 );
 
 

@@ -2,6 +2,8 @@ import React from 'react';
 import {GridList} from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
 import CollectionCard from './CollectionCard';
+import collections from '../data/collections';
+
 
 
 
@@ -12,7 +14,7 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: '900',
+    width: 900,
     height: '100%',
     overflowY: 'auto',
   },
@@ -30,7 +32,7 @@ class CollectionGrid extends React.Component {
           style={styles.gridList}
         >
           <Subheader>Collections</Subheader>
-          {this.props.collections.map((collection, i) => (
+          {collections.map((collection, i) => (
             <CollectionCard
               key={i}
               collectionId={i}

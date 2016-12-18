@@ -6,6 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { Link } from 'react-router';
 
 
 const Logged = (props) => (
@@ -45,11 +46,11 @@ class Navbar extends Component {
     return (
       <div>
         <AppBar
-          title="Title"
+          title={<Link to="/">Home</Link>}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           style={{backgroundColor: '#EA4E4E'}}
           onLeftIconButtonTouchTap={this.handleToggle}
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          // iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />
         <Drawer open={this.state.open}>
           <AppBar title='AppBar' onTouchTap={this.handleClose} />

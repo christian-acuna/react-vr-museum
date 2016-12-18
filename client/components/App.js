@@ -14,18 +14,24 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      collections: collections
+      collections: []
     }
   }
 
   collectionSearch(term) {
-    const data = axios.get(`http://localhost:3000/v1/search?q=${term}`).then(function(response) {
-      console.log(response);
-      console.log(this);
+    if (term.length > 0) {
+      const data = axios.get(`http://localhost:3000/v1/search?q=${term}`).then(function(response) {
+        console.log(response);
+        console.log(this);
+        this.setState({
+          collections: response.data
+        })
+      }.bind(this));
+    } else {
       this.setState({
-        collections: response.data
+        collections: []
       })
-    }.bind(this));
+    }
   }
 
   render() {
@@ -35,7 +41,7 @@ class App extends React.Component {
           <Navbar />
           <SearchBar onSearchTermChange={term=>this.collectionSearch(term)}/>
           <div>
-            {React.cloneElement(this.props.children, this.props)}
+            {React.cloneElement(this.props.children, {searchCollections: this.state.collections, collections: collections})}
           </div>
         </div>
       </MuiThemeProvider>

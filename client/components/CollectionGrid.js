@@ -2,7 +2,6 @@ import React from 'react';
 import {GridList} from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
 import CollectionCard from './CollectionCard';
-import collections from '../data/collections';
 
 const styles = {
   root: {
@@ -20,6 +19,40 @@ const styles = {
 
 class CollectionGrid extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.renderSearch = this.renderSearch.bind(this)
+    this.renderDefault = this.renderDefault.bind(this)
+  }
+
+  renderSearch() {
+    return this.props.searchCollections.map((collection, i) => (
+      <CollectionCard
+        key={i}
+        collectionId={collection.id}
+        title={collection.title}
+        image={collection.primary_object.image_url}
+        user={collection.user}
+
+        >
+      </CollectionCard>
+    ))
+  }
+
+  renderDefault() {
+    return this.props.collections.map((collection, i) => (
+      <CollectionCard
+        key={i}
+        collectionId={collection.id}
+        title={collection.title}
+        image={collection.primary_object.image_url}
+        user={collection.user}
+        >
+      </CollectionCard>
+    ))
+  }
+
+
   render() {
     return (
       <div style={styles.root}>
@@ -29,17 +62,7 @@ class CollectionGrid extends React.Component {
           style={styles.gridList}
         >
           <Subheader>Collections</Subheader>
-          {collections.map((collection, i) => (
-            <CollectionCard
-              key={i}
-              collectionId={collection.id}
-              title={collection.title}
-              image={collection.primary_object.image_url}
-              user={collection.user}
-
-              >
-            </CollectionCard>
-          ))}
+          {this.props.searchCollections.length > 0 ? this.renderSearch() : this.renderDefault()}
         </GridList>
       </div>
     );

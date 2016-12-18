@@ -4,9 +4,6 @@ import Subheader from 'material-ui/Subheader';
 import CollectionCard from './CollectionCard';
 import collections from '../data/collections';
 
-
-
-
 const styles = {
   root: {
     display: 'flex',
@@ -35,9 +32,11 @@ class CollectionGrid extends React.Component {
           {collections.map((collection, i) => (
             <CollectionCard
               key={i}
-              collectionId={i}
+              collectionId={collection.id}
               title={collection.title}
               image={collection.primary_object.image_url}
+              user={collection.user}
+
               >
             </CollectionCard>
           ))}

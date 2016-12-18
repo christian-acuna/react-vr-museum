@@ -1,27 +1,23 @@
 // let's go!
 import React from 'react';
 import { render } from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import Navbar from './components/Navbar'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-injectTapEventPlugin();
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import App from './components/App';
 import collections from './data/collections';
-import CollectionGrid from './components/CollectionGrid'
+import CollectionGrid from './components/CollectionGrid';
+import UserProfile from './components/UserProfile';
 
-class App extends React.Component {
 
-  render() {
-    return (
-      <MuiThemeProvider>
-        <div>
-          <Navbar />
-          <CollectionGrid collections={collections} />
 
-        </div>
-      </MuiThemeProvider>
-    );
-  }
+const router = (
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={CollectionGrid}></IndexRoute>
+      <Route path="/users/:userId" component={ UserProfile }></Route>
+    </Route>
+  </Router>
+);
 
-}
 
-render(<App />, document.getElementById('root'));
+
+render(router, document.getElementById('root'));

@@ -5,6 +5,7 @@ import SearchInput, {createFilter} from 'react-search-input'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SearchBar from './SearchBar'
 import collections from '../data/collections';
+import axios from 'axios';
 injectTapEventPlugin();
 
 
@@ -18,10 +19,13 @@ class App extends React.Component {
   }
 
   collectionSearch(term) {
-    this.setState({
-      collections: "answer"
-    })
-    console.log(term)
+    const data = axios.get(`http://localhost:3000/v1/search?q=${term}`).then(function(response) {
+      console.log(response);
+      console.log(this);
+      this.setState({
+        collections: response.data
+      })
+    }.bind(this));
   }
 
   render() {

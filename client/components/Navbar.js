@@ -8,6 +8,12 @@ import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { Link } from 'react-router';
 
+const styles = {
+  navLink: {
+    color: 'white',
+    textDecoration: 'none',
+  }
+}
 
 const Logged = (props) => (
   <IconMenu
@@ -46,7 +52,7 @@ class Navbar extends Component {
     return (
       <div>
         <AppBar
-          title={<Link to="/">Home</Link>}
+          title={<Link to="/" style={ styles.navLink }>Home</Link>}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
           style={{backgroundColor: '#EA4E4E'}}
           onLeftIconButtonTouchTap={this.handleToggle}

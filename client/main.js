@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Components
-import App from './components/App';
+import MainLayout from './components/MainLayout';
 import CollectionGrid from './components/CollectionGrid';
 import UserProfile from './components/UserProfile';
 import UserCollectionGrid from './components/UserCollectionGrid'
@@ -21,7 +21,7 @@ import store, { history } from './store';
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}>
+      <Route path="/" component={MainLayout}>
         <IndexRoute component={CollectionGrid}></IndexRoute>
         <Route path="/users/:userId" component={ UserProfile }></Route>
         <Route path="/users/:userId/collections/:collectionId" component={ UserCollectionGrid }></Route>

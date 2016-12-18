@@ -54,7 +54,7 @@ class Navbar extends Component {
         <AppBar
           title={<Link to="/" style={ styles.navLink }>Home</Link>}
           iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={{backgroundColor: '#EA4E4E'}}
+          style={{backgroundColor: '#7C7877'}}
           onLeftIconButtonTouchTap={this.handleToggle}
           iconElementRight={this.state.logged ? <Logged /> : <Login />}
         />

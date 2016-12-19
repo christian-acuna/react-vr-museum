@@ -11,7 +11,7 @@ const port = debug ? 8080 : process.env.PORT;
 const app = express();
 
 
-app.use(express.static(__dirname + '/dist'));
+app.use('/static', express.static(__dirname + '/dist'));
 
 app.get('*', function (request, response){
     response.sendFile(path.resolve(__dirname, 'index.html'))

@@ -27,3 +27,9 @@ export function sendLogin(email, password) {
       });
   };
 }
+
+export function logOut() {
+  return {
+    type: 'LOGOUT_RESPONSE_FULFILLED'
+  };
+}

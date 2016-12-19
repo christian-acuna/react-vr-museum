@@ -22,8 +22,15 @@ export default function reducer(state={
         return {
           ...state,
           auth: {...state.auth, access_token: action.payload.access_token},
-        }
+        };
       }
+
+    case 'LOGOUT_RESPONSE_FULFILLED': {
+      return{
+        ...state,
+        auth:{...state.auth, access_token: null}
+      };
+    }
 
     default:
       return state;

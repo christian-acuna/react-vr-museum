@@ -26,21 +26,8 @@ const styles = {
   },
   header: {
     textAlign: 'center',
-  }
+  },
 }
-
-const Logged = (props) => (
-  <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-  >
-    <MenuItem primaryText="Profile" />
-    <MenuItem primaryText="Sign out" />
-  </IconMenu>
-);
 
 class LoginModal extends React.Component {
 
@@ -55,7 +42,6 @@ class LoginModal extends React.Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
 
   handleClose () {
     this.props.hideLoginModal();
@@ -114,6 +100,7 @@ class Navbar extends Component {
     }
     this.handleToggle = this.handleToggle.bind(this)
     this.loginModal = this.loginModal.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
   }
 
   handleToggle () {
@@ -125,9 +112,26 @@ class Navbar extends Component {
     this.props.showLoginModal();
   }
 
+  handleLogOut(){
+    this.props.logOut();
+  } 
+
   render() {
     const Login = (props) => (
       <FlatButton onClick={this.loginModal} label="Login" />
+    );
+
+    const Logged = (props) => (
+      <IconMenu
+      iconButtonElement={
+      <IconButton><MoreVertIcon /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+      >
+        <MenuItem primaryText="Profile" />
+        <MenuItem primaryText="Sign out" onClick={this.handleLogOut} />
+      </IconMenu>
     );
 
     return (

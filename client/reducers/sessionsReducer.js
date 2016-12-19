@@ -3,6 +3,9 @@ export default function reducer(state={
   loginForm: {
     email: null,
     password: null
+  },
+  auth: {
+    access_token: null
   }
 }, action) {
 
@@ -14,13 +17,13 @@ export default function reducer(state={
     case 'HIDE_LOGIN_MODAL': {
       return {...state, loginVisible: false};
     }
-    // case 'UPDATE_EMAIL_LOGIN': {
-    //   return {...state, loginForm: {...state.loginForm, email: action.payload} }
-    // }
-    //
-    // case 'UPDATE_PASSWORD_LOGIN': {
-    //   return {...state, loginForm: {...state.loginForm, password: action.payload} }
-    // }
+
+    case 'LOGIN_RESPONSE_FULFILLED': {
+        return {
+          ...state,
+          auth: {...state.auth, access_token: action.payload.access_token},
+        }
+      }
 
     default:
       return state;

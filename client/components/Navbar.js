@@ -11,6 +11,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { Link } from 'react-router';
 import Dialog from 'material-ui/Dialog';
 
+
 const styles = {
   navLink: {
     color: 'white',
@@ -41,23 +42,82 @@ const Logged = (props) => (
   </IconMenu>
 );
 
+class LoginModal extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: false,
+      logged: false,
+      email: '',
+      password: '',
+    }
+    this.handleClose = this.handleClose.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+
+  handleClose () {
+    this.props.hideLoginModal();
+  }
+
+  handleChange(key) {
+    const email = this.refs.email.input.value;
+    const password = this.refs.password.input.value;
+    console.log(email, password);
+    this.props.sendLogin(email, password);
+    this.props.hideLoginModal();
+  }
+
+
+  render() {
+    return (
+        <Dialog
+          title="Login"
+          modal={false}
+          open={this.props.sessions.loginVisible}
+          onRequestClose={this.handleClose}
+          contentStyle={styles.dialog}
+          style={styles.header}
+        >
+          <div>
+            <TextField ref="email"
+              floatingLabelText="Email"/>
+            <br />
+            <TextField
+              floatingLabelText="Password"
+              ref="password"
+              type="password"/>
+              <br />
+              <RaisedButton onClick={this.handleChange} label="Submit"
+                secondary={true}
+                style={styles.buttonStyle}
+              />
+          </div>
+        </Dialog>
+    );
+  }
+
+}
+
 
 
 class Navbar extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { open: false, logged: false,}
+    this.state = {
+      open: false,
+      logged: false,
+      email: '',
+      password: '',
+    }
     this.handleToggle = this.handleToggle.bind(this)
     this.loginModal = this.loginModal.bind(this)
-    this.handleClose = this.handleClose.bind(this)
   }
 
   handleToggle () {
     this.setState({ open: !this.state.open });
-  }
-  handleClose () {
-    this.props.hideLoginModal();
   }
 
   loginModal() {
@@ -70,39 +130,14 @@ class Navbar extends Component {
       <FlatButton onClick={this.loginModal} label="Login" />
     );
 
-    const LoginModal = (props) => (
-      <Dialog
-        title="Login"
-        modal={false}
-        open={this.props.sessions.loginVisible}
-        onRequestClose={this.handleClose}
-        contentStyle={styles.dialog}
-        style={styles.header}
-      >
-        <div>
-          <TextField
-            floatingLabelText="Email"/>
-          <br />
-          <TextField
-            floatingLabelText="Password"
-            type="password"/>
-            <br />
-            <RaisedButton label="Submit"
-              secondary={true}
-              style={styles.buttonStyle}
-            />
-        </div>
-      </Dialog>
-    )
-
     return (
       <div>
-        <LoginModal />
+        <LoginModal {...this.props}/>
         <AppBar
           title={<Link to="/" style={ styles.navLink }>Home</Link>}
           showMenuIconButton={false}
           style={{backgroundColor: '#7C7877'}}
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          iconElementRight={this.props.sessions.auth.access_token ? <Logged /> : <Login />}
         />
       </div>
     );

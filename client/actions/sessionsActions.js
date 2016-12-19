@@ -14,7 +14,7 @@ export function hideLoginModal() {
 
 export function sendLogin(email, password) {
   return function(dispatch) {
-    axios.post('http://localhost:3000/v1/login', {
+    axios.post('https://vr-museum-api.herokuapp.com/v1/login', {
       email: email,
       password: password
     })

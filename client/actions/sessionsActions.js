@@ -27,3 +27,15 @@ export function sendLogin(email, password) {
       });
   };
 }
+
+export function logOut() {
+  return {
+    type: 'LOGOUT_RESPONSE_FULFILLED'
+  };
+}
+
+// export function showProfile(){
+//   return function(dispatch){
+//     axios.post('https://vr-museum-api.herokuapp.com/v1/'
+//   }
+// }

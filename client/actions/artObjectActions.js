@@ -12,3 +12,9 @@ export function getArtObject(artObjectId) {
       });
   };
 }
+
+export function closeArtObjectModal() {
+  return {
+    type: 'HIDE_ART_OBJECT_MODAL'
+  };
+}

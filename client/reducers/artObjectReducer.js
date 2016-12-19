@@ -19,6 +19,12 @@ export default function reducer(state={
           currentArtObject: action.payload,
         }
       }
+      case 'HIDE_ART_OBJECT_MODAL': {
+        return {
+          ...state,
+          showModal: false,
+        }
+      }
     }
     return state
   }

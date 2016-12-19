@@ -1,9 +1,10 @@
 import React from 'react';
-import {GridList} from 'material-ui/GridList';
+import {GridList, GridTile} from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
 import CollectionCard from './CollectionCard';
 import ArtObjectCard from './ArtObjectCard';
 import Dialog from 'material-ui/Dialog';
+
 
 const styles = {
   root: {
@@ -17,18 +18,11 @@ const styles = {
     overflowY: 'auto',
   },
   dialog: {
-    width: '80%',
+    width: '60%',
     maxWidth: 'none',
   }
 };
 
-const seadragon_conf = {
-      sequenceMode:  true,
-      showReferenceStrip: true,
-      tileSources:   [
-          'http://libimages.princeton.edu/loris2/pudl0001%2F4609321%2Fs42%2F00000001.jp2/info.json'
-      ]
-  }
 
 
 class ArtObjectsGrid extends React.Component {
@@ -39,7 +33,7 @@ class ArtObjectsGrid extends React.Component {
       open: this.props.artObjects.showModal
     };
     // this.handleOpen = this.handleOpen.bind(this)
-    // this.handleClose = this.handleClose.bind(this)
+    this.handleClose = this.handleClose.bind(this)
     // this.renderDefault = this.renderDefault.bind(this)
   }
 
@@ -47,9 +41,10 @@ class ArtObjectsGrid extends React.Component {
   //   this.setState({open: true});
   // };
   //
-  // handleClose () {
-  //   this.setState({open: false});
-  // };
+  handleClose () {
+    console.log('1213123');
+    this.props.closeArtObjectModal();
+  };
 
 
   // componentWillMount() {
@@ -90,15 +85,21 @@ class ArtObjectsGrid extends React.Component {
       <div style={styles.root}>
         <Dialog
           title={this.props.artObjects.currentArtObject.title}
-          modal={true}
+          modal={false}
           open={this.props.artObjects.showModal}
           onRequestClose={this.handleClose}
           contentStyle={styles.dialog}
         >
-
-          <img src={this.props.artObjects.currentArtObject.image_url} alt=""/>
+          <GridList
+            cellHeight={400}
+            cols={2}
+            style={styles.gridList}
+          >
+            <GridTile>
+              <img src={this.props.artObjects.currentArtObject.image_url} />
+            </GridTile>
+          </GridList>
         </Dialog>
-
         <GridList
           cellHeight={400}
           cols={3.1}

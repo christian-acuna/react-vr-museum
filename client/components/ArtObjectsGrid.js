@@ -22,6 +22,14 @@ const styles = {
   }
 };
 
+const seadragon_conf = {
+      sequenceMode:  true,
+      showReferenceStrip: true,
+      tileSources:   [
+          'http://libimages.princeton.edu/loris2/pudl0001%2F4609321%2Fs42%2F00000001.jp2/info.json'
+      ]
+  }
+
 
 class ArtObjectsGrid extends React.Component {
 
@@ -87,6 +95,7 @@ class ArtObjectsGrid extends React.Component {
           onRequestClose={this.handleClose}
           contentStyle={styles.dialog}
         >
+
           <img src={this.props.artObjects.currentArtObject.image_url} alt=""/>
         </Dialog>
 
@@ -94,7 +103,6 @@ class ArtObjectsGrid extends React.Component {
           cellHeight={400}
           cols={3.1}
           style={styles.gridList}
-          {...this.props}
         >
           <Subheader>Art Objects</Subheader>
           { this.renderDefault()}

@@ -44,7 +44,7 @@ class Main extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <Navbar />
+          <Navbar {...this.props} />
           <SearchBar onSearchTermChange={term=>this.collectionSearch(term)}/>
           <div>
             {React.cloneElement(this.props.children, {...this.props, searchCollections: this.state.collections} )}

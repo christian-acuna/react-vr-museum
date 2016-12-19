@@ -24,6 +24,9 @@ class CollectionGrid extends React.Component {
     this.renderSearch = this.renderSearch.bind(this)
     this.renderDefault = this.renderDefault.bind(this)
   }
+  componentWillMount() {
+    this.props.fetchCollections();
+  }
 
   renderSearch() {
     return this.props.searchCollections.map((collection, i) => (
@@ -40,7 +43,7 @@ class CollectionGrid extends React.Component {
   }
 
   renderDefault() {
-    return this.props.collections.map((collection, i) => (
+    return this.props.collections.collections.map((collection, i) => (
       <CollectionCard
         key={i}
         collectionId={collection.id}

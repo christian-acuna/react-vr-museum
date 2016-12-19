@@ -5,13 +5,27 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { Link } from 'react-router';
+import Dialog from 'material-ui/Dialog';
+
 
 const styles = {
   navLink: {
     color: 'white',
     textDecoration: 'none',
+  },
+  dialog: {
+    width: '30%',
+    maxWidth: 'none',
+  },
+  buttonStyle: {
+    margin: 12,
+  },
+  header: {
+    textAlign: 'center',
   }
 }
 
@@ -28,41 +42,103 @@ const Logged = (props) => (
   </IconMenu>
 );
 
-const Login = (props) => (
-  <FlatButton label="Login" />
-);
+class LoginModal extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: false,
+      logged: false,
+      email: '',
+      password: '',
+    }
+    this.handleClose = this.handleClose.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+
+  handleClose () {
+    this.props.hideLoginModal();
+  }
+
+  handleChange(key) {
+    const email = this.refs.email.input.value;
+    const password = this.refs.password.input.value;
+    console.log(email, password);
+    this.props.sendLogin(email, password);
+    this.props.hideLoginModal();
+  }
+
+
+  render() {
+    return (
+        <Dialog
+          title="Login"
+          modal={false}
+          open={this.props.sessions.loginVisible}
+          onRequestClose={this.handleClose}
+          contentStyle={styles.dialog}
+          style={styles.header}
+        >
+          <div>
+            <TextField ref="email"
+              floatingLabelText="Email"/>
+            <br />
+            <TextField
+              floatingLabelText="Password"
+              ref="password"
+              type="password"/>
+              <br />
+              <RaisedButton onClick={this.handleChange} label="Submit"
+                secondary={true}
+                style={styles.buttonStyle}
+              />
+          </div>
+        </Dialog>
+    );
+  }
+
+}
+
+
 
 class Navbar extends Component {
 
   constructor (props) {
     super(props)
-    this.state = { open: false, logged: true,}
+    this.state = {
+      open: false,
+      logged: false,
+      email: '',
+      password: '',
+    }
     this.handleToggle = this.handleToggle.bind(this)
-    this.handleClose = this.handleClose.bind(this)
+    this.loginModal = this.loginModal.bind(this)
   }
 
   handleToggle () {
     this.setState({ open: !this.state.open });
   }
-  handleClose () {
-    this.setState({ open: false });
+
+  loginModal() {
+    console.log('hhohueou')
+    this.props.showLoginModal();
   }
 
   render() {
+    const Login = (props) => (
+      <FlatButton onClick={this.loginModal} label="Login" />
+    );
+
     return (
       <div>
+        <LoginModal {...this.props}/>
         <AppBar
           title={<Link to="/" style={ styles.navLink }>Home</Link>}
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
-          style={{backgroundColor: '#EA4E4E'}}
-          onLeftIconButtonTouchTap={this.handleToggle}
-          iconElementRight={this.state.logged ? <Logged /> : <Login />}
+          showMenuIconButton={false}
+          style={{backgroundColor: '#7C7877'}}
+          iconElementRight={this.props.sessions.auth.access_token ? <Logged /> : <Login />}
         />
-        <Drawer open={this.state.open}>
-          <AppBar title='AppBar' onTouchTap={this.handleClose} />
-          <MenuItem>Menu Item</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
-        </Drawer>
       </div>
     );
   }

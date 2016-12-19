@@ -15,11 +15,11 @@ const styles = {
 		color: '#EC7357'
 	},
 	underlineStyle: {
-    borderColor: '#EC7357',
+    borderColor: 'orange500',
   },
 }
 
-class SearchBar extends Component{
+class SearchLayout extends Component{
 	constructor(props){
 		super(props)
 
@@ -32,12 +32,13 @@ class SearchBar extends Component{
 				<div>
 					<TextField
       			floatingLabelText="Search art or collections"
-						// floatingLabelStyle={styles.floatingLabel}
+						floatingLabelStyle={styles.floatingLabel}
 						underlineFocusStyle={styles.underlineStyle}
 						value={this.state.term}
 						onChange={event => this.onInputChange(event.target.value)}
 						style={styles.searchBar}
       			/>
+						{this.props.children}
     		</div>
 			)
 	}
@@ -48,4 +49,4 @@ class SearchBar extends Component{
 	}
 }
 
-export default SearchBar;
+export default SearchLayout;

@@ -13,6 +13,7 @@ function mapStateToProps(state) {
     collections: state.collections,
     artObjects: state.artObjects,
     sessions: state.sessions,
+    currentUser: state.currentUser,
   };
 }
 

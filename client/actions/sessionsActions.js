@@ -33,3 +33,9 @@ export function logOut() {
     type: 'LOGOUT_RESPONSE_FULFILLED'
   };
 }
+
+// export function showProfile(){
+//   return function(dispatch){
+//     axios.post('https://vr-museum-api.herokuapp.com/v1/'
+//   }
+// }

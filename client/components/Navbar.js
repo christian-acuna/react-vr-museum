@@ -10,6 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { Link } from 'react-router';
 import Dialog from 'material-ui/Dialog';
+import {Router, Route, browserHistory} from 'react-router';
 
 
 const styles = {
@@ -101,6 +102,7 @@ class Navbar extends Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.loginModal = this.loginModal.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    // this.handleProfile = this.handleProfile.bind(this)
   }
 
   handleToggle () {
@@ -116,6 +118,11 @@ class Navbar extends Component {
     this.props.logOut();
   } 
 
+  // handleProfile(event){
+  //   event.preventDefault();
+  //   this.contex.router.transitionTo('/users/:userId');
+  // }
+
   render() {
     const Login = (props) => (
       <FlatButton onClick={this.loginModal} label="Login" />
@@ -129,7 +136,7 @@ class Navbar extends Component {
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <MenuItem primaryText="Profile" />
+        <Link to={`/users/${this.props.currentUser.user.user_id}`}><MenuItem primaryText="Profile" /></Link>
         <MenuItem primaryText="Sign out" onClick={this.handleLogOut} />
       </IconMenu>
     );

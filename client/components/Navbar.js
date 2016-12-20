@@ -116,7 +116,7 @@ class Navbar extends Component {
 
   handleLogOut(){
     this.props.logOut();
-  } 
+  }
 
   // handleProfile(event){
   //   event.preventDefault();
@@ -148,7 +148,7 @@ class Navbar extends Component {
           title={<Link to="/" style={ styles.navLink }>Home</Link>}
           showMenuIconButton={false}
           style={{backgroundColor: '#7C7877'}}
-          iconElementRight={this.props.sessions.auth.access_token ? <Logged /> : <Login />}
+          iconElementRight={this.props.sessions.auth.loggedIn ? <Logged /> : <Login />}
         />
       </div>
     );

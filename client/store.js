@@ -9,17 +9,6 @@ import promise from 'redux-promise-middleware';
 import reducer from './reducers';
 const authToken = localStorage.getItem('user_token')
 
-// const defaultState = {
-//   auth: null
-// }
-//
-// if (authToken) {
-//     store.dispatch({type: 'AUTH_FROM_LOCAL_STORGE', payload: response.data});
-//     defaultState = {
-//     session: authToken
-//   }
-// }
-//
 
 const enhancers = compose(
   applyMiddleware(promise(), thunk, logger()),
@@ -28,6 +17,8 @@ const enhancers = compose(
 let persistedState;
 let store;
 if (authToken) {
+  // if authToken exists in localStorage then create a store with sessions
+  //  state as persistedState
   persistedState = {
    sessions: {
      loginVisible: false,

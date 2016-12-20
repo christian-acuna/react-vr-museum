@@ -22,7 +22,7 @@ export default function reducer(state={
     case 'LOGIN_RESPONSE_FULFILLED': {
         return {
           ...state,
-          auth: {...state.auth, access_token: action.payload.access_token},
+          auth: {...state.auth, access_token: action.payload.access_token, loggedIn: true},
         };
       }
 

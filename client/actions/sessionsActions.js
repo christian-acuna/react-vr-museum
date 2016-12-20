@@ -1,4 +1,6 @@
 import axios from 'axios'
+import * as LocalStorage from '../helpers/token_management'
+import { browserHistory } from 'react-router'
 
 export function showLoginModal() {
   return {
@@ -19,6 +21,7 @@ export function sendLogin(email, password) {
       password: password
     })
       .then((response) => {
+        LocalStorage.login(response.data.access_token)
         console.log(response);
         dispatch({type: 'LOGIN_RESPONSE_FULFILLED', payload: response.data});
       })
@@ -29,6 +32,8 @@ export function sendLogin(email, password) {
 }
 
 export function logOut() {
+  LocalStorage.logout()
+  browserHistory.push('/')
   return {
     type: 'LOGOUT_RESPONSE_FULFILLED'
   };

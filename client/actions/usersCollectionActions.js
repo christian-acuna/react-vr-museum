@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store'
 
 export function getCollectionTitle(userId,art_object) {
   return function(dispatch) {
@@ -19,15 +20,21 @@ export function getCollectionTitle(userId,art_object) {
 //   };
 // }
 
-export function addArtObjectToCollection(userId,art_object) {
+export function addArtObjectToCollection(userId,art_object_id,collection_id,access_token) {
   return function(dispatch) {
-    axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${userId}/collections/?title=true&art_object=${art_object}`)
+    axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${userId}/collections/${collection_id}/art_objects`, {art_object_id: art_object_id},
+      { headers: {
+        "Authorization": access_token
+      }}
+      )
+
       .then((response) => {
         console.log(response);
-        dispatch({type: 'FETCH_COLLECTION_TITLE_FULFILLED', payload: response.data});
+        store.dispatch(getCollectionTitle(userId, art_object_id));
+        dispatch({type: 'ADD_ART_OBJECT_TO_COLLECTION_FULFILLED', payload: "Art Object Successfuly added"});
       })
       .catch((err) => {
-        dispatch({type: 'FETCH_COLLECTION_TITLE_REJECTED', payload: err});
+        dispatch({type: 'ADD_ART_OBJECT_TO_COLLECTION_REJECTED', payload: err});
       });
   };
 }

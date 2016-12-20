@@ -68,7 +68,6 @@ class ArtObjectsGrid extends React.Component {
       openCollections: true,
       anchorEl: event.currentTarget,
     });
-    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjects.currentArtObject.id)
   };
 
   renderDefault() {
@@ -86,7 +85,7 @@ class ArtObjectsGrid extends React.Component {
   }
 
   addToCollection(collection_id){
-    this.props.addArtObjectToCollection
+    this.props.addArtObjectToCollection(this.props.params.userId, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
   }
 
   handleRequestClose() {
@@ -125,11 +124,12 @@ class ArtObjectsGrid extends React.Component {
             >
                 <ContentAdd />
             </FloatingActionButton>
-            <Popover
+            <Popover 
+              canAutoPosition={true}
               open={this.state.openCollections}
               anchorEl={this.state.anchorEl}
               anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-              targetOrigin={{horizontal: 'left', vertical: 'top'}}
+              targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
               onRequestClose={this.handleRequestClose.bind(this)}
             >
               <Menu>

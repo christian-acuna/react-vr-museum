@@ -19,6 +19,7 @@ class ArtObjectCard extends React.Component {
 
   sendArtObject() {
     this.props.getArtObject(this.props.artObjectId);
+    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjectId)
   }
 
   render() {

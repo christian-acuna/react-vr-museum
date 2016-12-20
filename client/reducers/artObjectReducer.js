@@ -25,6 +25,9 @@ export default function reducer(state={
           showModal: false,
         }
       }
+      case 'ADD_ART_OBJECT_TO_COLLECTION_FULFILLED':{
+        return state
+      }
     }
     return state
   }

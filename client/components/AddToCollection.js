@@ -98,10 +98,15 @@ class AddToCollection extends React.Component {
         >
           <Menu>
             {
+              this.props.currentUser.user.collectionTitles.length > 0 ?
               this.props.currentUser.user.collectionTitles.map(function(title,i){
 
               return (<MenuItem primaryText={title[0]} onClick={this.addToCollection.bind(this, title[1])}/>)
             }.bind(this))
+            :
+            <div style={styles.addCollectionContainer}>
+              <h4 style={{color: 'grey'}}>Object in all Collections</h4>
+            </div>
           }
           <Divider />
           <div style={styles.addCollectionContainer}>

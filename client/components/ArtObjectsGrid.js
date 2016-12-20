@@ -86,8 +86,13 @@ class ArtObjectsGrid extends React.Component {
               <img src={this.props.artObjects.currentArtObject.image_url} />
             </GridTile>
           </GridList>
+          {
+            this.props.sessions.auth.loggedIn ?
+            <AddToCollection {...this.props}/>
+            :
+            <h3>Login to add to your collection</h3>
+          }
 
-          <AddToCollection {...this.props}/>
         </Dialog>
 
         <GridList

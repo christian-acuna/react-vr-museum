@@ -68,7 +68,7 @@ class ArtObjectsGrid extends React.Component {
       openCollections: true,
       anchorEl: event.currentTarget,
     });
-    this.props.getCollectionTitle(this.props.params.userId)
+    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjects.currentArtObject.id)
   };
 
   renderDefault() {
@@ -85,8 +85,8 @@ class ArtObjectsGrid extends React.Component {
     ))
   }
 
-  addToCollection(){
-    console.log("HIIIII")
+  addToCollection(collection_id){
+    this.props.addArtObjectToCollection
   }
 
   handleRequestClose() {
@@ -136,8 +136,8 @@ class ArtObjectsGrid extends React.Component {
               {
                 this.props.currentUser.user.collectionTitles.map(function(title,i){
 
-                return (<MenuItem primaryText={title} />)
-              })
+                return (<MenuItem primaryText={title[0]} onClick={this.addToCollection.bind(this, title[1])}/>)
+              }.bind(this))
             }
   
               </Menu>

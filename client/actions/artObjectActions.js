@@ -18,3 +18,4 @@ export function closeArtObjectModal() {
     type: 'HIDE_ART_OBJECT_MODAL'
   };
 }
+

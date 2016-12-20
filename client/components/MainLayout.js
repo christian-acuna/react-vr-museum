@@ -7,6 +7,7 @@ import Main from './Main';
 import * as collectionsActions from '../actions/collectionsActions';
 import * as artObjectActions from '../actions/artObjectActions';
 import * as sessionsActions from '../actions/sessionsActions';
+import * as userCollections from '../actions/usersCollectionActions';
 
 function mapStateToProps(state) {
   return {
@@ -18,9 +19,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispachToProps(disptach) {
-  return bindActionCreators(Object.assign({}, collectionsActions, artObjectActions, sessionsActions), disptach);
+  return bindActionCreators(Object.assign({}, collectionsActions, artObjectActions, sessionsActions, userCollections), disptach);
 }
 
 const App = connect(mapStateToProps, mapDispachToProps)(Main);
 
 export default App;
+
+

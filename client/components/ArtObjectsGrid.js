@@ -9,6 +9,9 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 
@@ -32,6 +35,12 @@ const styles = {
   },
   buttonContainer:{
     float: 'right'
+  },
+  addCollectionContainer: {
+    padding: '0 16px'
+  },
+  addToCollectionButton: {
+    margin: 12,
   }
 };
 
@@ -116,15 +125,15 @@ class ArtObjectsGrid extends React.Component {
           </GridList>
 
           <div style={styles.buttonContainer}>
-            <FloatingActionButton 
-              mini={true} 
-              secondary={true} 
+            <FloatingActionButton
+              mini={true}
+              secondary={true}
               style={styles.plusButton}
               onClick={this.handleTouchTap.bind(this)}
             >
                 <ContentAdd />
             </FloatingActionButton>
-            <Popover 
+            <Popover
               canAutoPosition={true}
               open={this.state.openCollections}
               anchorEl={this.state.anchorEl}
@@ -133,13 +142,19 @@ class ArtObjectsGrid extends React.Component {
               onRequestClose={this.handleRequestClose.bind(this)}
             >
               <Menu>
-              {
-                this.props.currentUser.user.collectionTitles.map(function(title,i){
+                {
+                  this.props.currentUser.user.collectionTitles.map(function(title,i){
 
-                return (<MenuItem primaryText={title[0]} onClick={this.addToCollection.bind(this, title[1])}/>)
-              }.bind(this))
-            }
-  
+                  return (<MenuItem primaryText={title[0]} onClick={this.addToCollection.bind(this, title[1])}/>)
+                }.bind(this))
+              }
+              <Divider />
+              <div style={styles.addCollectionContainer}>
+                <h4 style={{marginBottom: 0}}>Create Collection</h4>
+                <TextField style={{ width: '73%'}}/>
+                <RaisedButton label="Add" primary={true} style={styles.addToCollectionButton} />
+              </div>
+
               </Menu>
             </Popover>
           </div>

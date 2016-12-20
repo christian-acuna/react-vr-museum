@@ -7,6 +7,9 @@ import sessions from './sessionsReducer';
 import user from './usersReducer'
 // import user from "./userReducer";
 // import user from "./userReducer"
+// const authToken = localStorage.getItem('user_token')
+
+
 
 export default combineReducers({
   collections: collections,

@@ -93,26 +93,29 @@ class RegisterModal extends React.Component {
     super(props)
     this.state = {
       open: false,
-      // email: '',
-      // password: '',
+      username: '',
+      email: '',
+      password: '',
     }
     this.handleClose = this.handleClose.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleClose () {
     this.props.hideRegisterModal();
   }
-  //
-  // handleChange(key) {
-  //   const email = this.refs.email.input.value;
-  //   const password = this.refs.password.input.value;
-  //   console.log(email, password);
-  //   this.props.sendLogin(email, password);
-  //   this.props.hideLoginModal();
-  // }
-  //
-  //
+
+  handleChange() {
+    const username = this.refs.username.input.value;
+    const email = this.refs.email.input.value;
+    const password = this.refs.password.input.value;
+    // console.log(username, email, password)
+    
+    this.props.registerUser(username, email, password);
+    this.props.hideRegisterModal();
+  }
+
+
   render() {
     return (
         <Dialog
@@ -124,7 +127,21 @@ class RegisterModal extends React.Component {
           style={styles.header}
         >
           <div>
-            <h1>hi</h1>
+            <TextField ref="username"
+              floatingLabelText="Username"/>
+            <br />
+            <TextField ref="email"
+              floatingLabelText="Email"/>
+            <br />
+            <TextField
+              floatingLabelText="Password"
+              ref="password"
+              type="password"/>
+              <br />
+              <RaisedButton onClick={this.handleChange} label="Submit"
+                secondary={true}
+                style={styles.buttonStyle}
+              />
           </div>
         </Dialog>
     );

@@ -35,7 +35,7 @@ export default function reducer(state={
     }
 
     case 'SHOW_REGISTER_MODAL': {
-      return {...state, registerVisible: true};
+      return {...state, registerVisible: true, loggedIn: false};
     }
 
     case 'HIDE_REGISTER_MODAL': {

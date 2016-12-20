@@ -3,6 +3,7 @@ export default function reducer(state={
     email: null,
     username: null,
     user_id: null,
+    collectionTitles: [],
   },
 }, action) {
 
@@ -16,6 +17,14 @@ export default function reducer(state={
                                 user_id:  action.payload.user_id
                               },
         };
+      }
+
+
+      case 'FETCH_COLLECTION_TITLE_FULFILLED': {
+        return{
+          ...state,
+          user: {...state.user, collectionTitles: action.payload},
+        }
       }
 
     default:

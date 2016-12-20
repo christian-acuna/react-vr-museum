@@ -4,6 +4,12 @@ import Subheader from 'material-ui/Subheader';
 import CollectionCard from './CollectionCard';
 import ArtObjectCard from './ArtObjectCard';
 import Dialog from 'material-ui/Dialog';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+
 
 
 const styles = {
@@ -20,6 +26,12 @@ const styles = {
   dialog: {
     width: '60%',
     maxWidth: 'none',
+  },
+  plusButton: {
+    marginRight: 20,
+  },
+  buttonContainer:{
+    float: 'right'
   }
 };
 
@@ -30,10 +42,12 @@ class ArtObjectsGrid extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      open: this.props.artObjects.showModal
+      open: this.props.artObjects.showModal,
+      openCollections: false,
     };
     // this.handleOpen = this.handleOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
+    this.addToCollection = this.addToCollection.bind(this)
     // this.renderDefault = this.renderDefault.bind(this)
   }
 
@@ -46,24 +60,16 @@ class ArtObjectsGrid extends React.Component {
     this.props.closeArtObjectModal();
   };
 
+  handleTouchTap(event) {
+    // This prevents ghost click.
+    event.preventDefault();
 
-  // componentWillMount() {
-  //   this.props.fetchCollections();
-  // }
-
-  // renderSearch() {
-  //   return this.props.searchCollections.map((collection, i) => (
-  //     <CollectionCard
-  //       key={i}
-  //       collectionId={collection.id}
-  //       title={collection.title}
-  //       image={collection.primary_object.image_url}
-  //       user={collection.user}
-  //
-  //       >
-  //     </CollectionCard>
-  //   ))
-  // }
+    this.setState({
+      openCollections: true,
+      anchorEl: event.currentTarget,
+    });
+    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjects.currentArtObject.id)
+  };
 
   renderDefault() {
     return this.props.localArtObjects.map((artObject, i) => (
@@ -78,6 +84,16 @@ class ArtObjectsGrid extends React.Component {
       </ArtObjectCard>
     ))
   }
+
+  addToCollection(collection_id){
+    this.props.addArtObjectToCollection
+  }
+
+  handleRequestClose() {
+    this.setState({
+      openCollections: false,
+    });
+  };
 
 
   render() {
@@ -99,6 +115,35 @@ class ArtObjectsGrid extends React.Component {
               <img src={this.props.artObjects.currentArtObject.image_url} />
             </GridTile>
           </GridList>
+
+          <div style={styles.buttonContainer}>
+            <FloatingActionButton 
+              mini={true} 
+              secondary={true} 
+              style={styles.plusButton}
+              onClick={this.handleTouchTap.bind(this)}
+            >
+                <ContentAdd />
+            </FloatingActionButton>
+            <Popover
+              open={this.state.openCollections}
+              anchorEl={this.state.anchorEl}
+              anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+              targetOrigin={{horizontal: 'left', vertical: 'top'}}
+              onRequestClose={this.handleRequestClose.bind(this)}
+            >
+              <Menu>
+              {
+                this.props.currentUser.user.collectionTitles.map(function(title,i){
+
+                return (<MenuItem primaryText={title[0]} onClick={this.addToCollection.bind(this, title[1])}/>)
+              }.bind(this))
+            }
+  
+              </Menu>
+            </Popover>
+          </div>
+
         </Dialog>
         <GridList
           cellHeight={400}

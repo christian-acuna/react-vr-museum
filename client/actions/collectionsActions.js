@@ -12,3 +12,27 @@ export function fetchCollections() {
       });
   };
 }
+
+
+export function addNewCollection(title, primary_object_id) {
+  return function(dispatch) {
+    const authToken = localStorage.getItem('user_token')
+    const user_id = authToken.split(':')
+    axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${user_id}/collections`, { user_collection: {
+      title: title,
+      primary_object_id: primary_object_id,
+      user_id: user_id
+    }},
+      { headers: {
+        'Authorization': authToken
+      }})
+      .then((response) => {
+        console.log(response);
+        debugger;
+        // dispatch({type: 'ADD_NEW_COLLECTION_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        dispatch({type: 'FETCH_COLLECTIONS_REJECTED', payload: err});
+      });
+  };
+}

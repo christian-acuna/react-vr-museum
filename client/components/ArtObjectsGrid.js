@@ -23,12 +23,6 @@ const styles = {
   dialog: {
     width: '60%',
     maxWidth: 'none',
-  },
-  addCollectionContainer: {
-    padding: '0 16px'
-  },
-  addToCollectionButton: {
-    margin: 12,
   }
 };
 
@@ -90,7 +84,7 @@ class ArtObjectsGrid extends React.Component {
             this.props.sessions.auth.loggedIn ?
             <AddToCollection {...this.props}/>
             :
-            <h3>Login to add to your collection</h3>
+            <h3 style={{float: 'right'}}>Login to add to your collection</h3>
           }
 
         </Dialog>

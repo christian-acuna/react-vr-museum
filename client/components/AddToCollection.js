@@ -14,20 +14,6 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
 const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 900,
-    height: '100%',
-    overflowY: 'auto',
-  },
-  dialog: {
-    width: '60%',
-    maxWidth: 'none',
-  },
   plusButton: {
     marginRight: 20,
   },
@@ -76,6 +62,18 @@ class AddToCollection extends React.Component {
     this.props.addArtObjectToCollection(this.props.params.userId, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
   }
 
+  handleAdd(key) {
+    const collectionTitle = this.refs.collectionTitle.input.value;
+    console.log(collectionTitle);
+
+    this.refs.collectionTitle.input.value = ''
+    this.props.addNewCollection(collectionTitle, this.props.artObjects.currentArtObject.id)
+    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjects.currentArtObject.id)
+
+    // this.props.sendLogin(email, password);
+    // this.props.hideLoginModal();
+  }
+
 
   render() {
     return (
@@ -111,8 +109,8 @@ class AddToCollection extends React.Component {
           <Divider />
           <div style={styles.addCollectionContainer}>
             <h4 style={{marginBottom: 0}}>Create Collection</h4>
-            <TextField style={{ width: '73%'}}/>
-            <RaisedButton label="Add" primary={true} style={styles.addToCollectionButton} />
+            <TextField ref="collectionTitle" style={{ width: '60%'}}/>
+            <RaisedButton label="Add" primary={true} style={styles.addToCollectionButton} onClick={this.handleAdd.bind(this)} />
           </div>
 
           </Menu>

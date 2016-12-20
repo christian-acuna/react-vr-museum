@@ -3,5 +3,5 @@ export function login(auth_token) {
 }
 
 export function logout() {
-    localStorage.setItem('user_token', '')
+  localStorage.removeItem('user_token')
 }

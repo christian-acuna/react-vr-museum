@@ -5,7 +5,8 @@ export default function reducer(state={
     password: null
   },
   auth: {
-    access_token: null
+    access_token: null,
+    loggedIn: false
   }
 }, action) {
 

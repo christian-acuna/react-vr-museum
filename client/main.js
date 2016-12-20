@@ -19,6 +19,7 @@ import { Provider } from 'react-redux';
 import store, { history } from './store';
 
 
+
 const router = (
   <Provider store={store}>
     <Router history={history}>

@@ -7,19 +7,48 @@ import { browserHistory } from 'react-router';
 import promise from 'redux-promise-middleware';
 
 import reducer from './reducers';
-//
+const authToken = localStorage.getItem('user_token')
+
 // const defaultState = {
-//   collections: []
-// };
+//   auth: null
+// }
+//
+// if (authToken) {
+//     store.dispatch({type: 'AUTH_FROM_LOCAL_STORGE', payload: response.data});
+//     defaultState = {
+//     session: authToken
+//   }
+// }
+//
 
 const enhancers = compose(
   applyMiddleware(promise(), thunk, logger()),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 );
+let persistedState;
+let store;
+if (authToken) {
+  persistedState = {
+   sessions: {
+     loginVisible: false,
+     loginForm: {
+       email: null,
+       password: null
+     },
+     auth: {
+       access_token: authToken,
+       loggedIn: true
+     },
+   }
+ }
+  store = createStore(reducer, persistedState, enhancers);
 
-// const middleware =
+} else {
+  store = createStore(reducer, enhancers);
+}
 
-const store = createStore(reducer, enhancers);
+
+console.log(store.getState());
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

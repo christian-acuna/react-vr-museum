@@ -14,6 +14,18 @@ export function hideLoginModal() {
   };
 }
 
+export function showRegisterModal() {
+  return {
+    type: 'SHOW_REGISTER_MODAL'
+  };
+}
+
+export function hideRegisterModal() {
+  return {
+    type: 'HIDE_REGISTER_MODAL'
+  };
+}
+
 export function sendLogin(email, password) {
   return function(dispatch) {
     axios.post('https://vr-museum-api.herokuapp.com/v1/login', {
@@ -38,6 +50,7 @@ export function logOut() {
     type: 'LOGOUT_RESPONSE_FULFILLED'
   };
 }
+
 
 // export function showProfile(){
 //   return function(dispatch){

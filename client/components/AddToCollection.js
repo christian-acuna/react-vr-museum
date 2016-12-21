@@ -59,7 +59,8 @@ class AddToCollection extends React.Component {
   };
 
   addToCollection(collection_id){
-    this.props.addArtObjectToCollection(this.props.params.userId, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
+    const user_id = localStorage.getItem('user_id')
+    this.props.addArtObjectToCollection(user_id, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
   }
 
   handleAdd(key) {

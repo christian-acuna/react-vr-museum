@@ -6,6 +6,13 @@ import FlatButton from 'material-ui/FlatButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import { Link, browserHistory } from 'react-router';
 
+
+const style={
+  tileFont:{
+    fontFamily: 'Roboto',
+  }
+}
+
 class CollectionCard extends React.Component {
   constructor(props) {
     super(props)
@@ -19,7 +26,9 @@ class CollectionCard extends React.Component {
   render() {
     return (
 
-      <GridTile onClick={this.goToCollectionPage}
+      <GridTile 
+        style={style.tileFont}
+        onClick={this.goToCollectionPage}
         key={this.props.collectionId}
         title={this.props.title}
         actionIcon={<IconButton><StarBorder color="white" /></IconButton>}

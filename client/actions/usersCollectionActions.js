@@ -14,6 +14,20 @@ export function getCollectionTitle(userId,art_object) {
   };
 }
 
+export function getUserCollections() {
+  return function(dispatch) {
+    const user_id= localStorage.getItem('user_id')
+    axios.get(`https://vr-museum-api.herokuapp.com/v1/users/${user_id}/collections`)
+      .then((response) => {
+        console.log(response);
+        dispatch({type: 'FETCH_USER_COLLECTIONS_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        dispatch({type: 'FETCH_USER_COLLECTIONS_REJECTED', payload: err});
+      });
+  };
+}
+
 // export function closeArtObjectModal() {
 //   return {
 //     type: 'HIDE_ART_OBJECT_MODAL'

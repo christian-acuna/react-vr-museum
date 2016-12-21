@@ -4,6 +4,7 @@ export default function reducer(state={
     username: null,
     user_id: null,
     collectionTitles: [],
+    collections:[]
   },
 }, action) {
 
@@ -26,6 +27,17 @@ export default function reducer(state={
           ...state,
           user: {...state.user, collectionTitles: action.payload},
         }
+      }
+
+      case 'FETCH_USER_COLLECTIONS_FULFILLED':{
+        return{
+          ...state,
+          user: {...state.user, collections: action.payload}
+        }
+      }
+      
+      case 'FETCH_USER_COLLECTIONS_REJECTED':{
+        return state;
       }
 
     default:

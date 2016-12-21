@@ -33,7 +33,7 @@ export function sendLogin(email, password) {
       password: password
     })
       .then((response) => {
-        LocalStorage.login(response.data.access_token, response.data.user_id)
+        LocalStorage.login(response.data.access_token, response.data.user_id, response.data.username)
         console.log(response);
         dispatch({type: 'LOGIN_RESPONSE_FULFILLED', payload: response.data});
       })
@@ -54,7 +54,7 @@ export function registerUser(username, email, password) {
       }
     })
       .then((response) => {
-        LocalStorage.login(response.data.access_token, response.data.id)
+        LocalStorage.login(response.data.access_token, response.data.id, response.data.username)
         console.log(response, 'yooo');
         dispatch({type: 'LOGIN_RESPONSE_FULFILLED', payload: response.data});
       })

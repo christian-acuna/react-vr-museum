@@ -7,7 +7,8 @@ import { browserHistory } from 'react-router';
 import promise from 'redux-promise-middleware';
 
 import reducer from './reducers';
-const authToken = localStorage.getItem('user_token')
+const authToken = localStorage.getItem('user_token');
+const user_id = localStorage.getItem('user_id')
 
 
 const enhancers = compose(
@@ -30,6 +31,12 @@ if (authToken) {
        access_token: authToken,
        loggedIn: true
      },
+   },
+   user: {
+    email: null,
+    username: null,
+    user_id: user_id,
+    collectionTitles: [],
    }
  }
   store = createStore(reducer, persistedState, enhancers);

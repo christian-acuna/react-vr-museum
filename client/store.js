@@ -9,7 +9,7 @@ import promise from 'redux-promise-middleware';
 import reducer from './reducers';
 const authToken = localStorage.getItem('user_token');
 const user_id = localStorage.getItem('user_id')
-
+const username = localStorage.getItem('username')
 
 const enhancers = compose(
   applyMiddleware(promise(), thunk, logger()),
@@ -34,7 +34,7 @@ if (authToken) {
    },
    user: {
     email: null,
-    username: null,
+    username: username,
     user_id: user_id,
     collectionTitles: [],
    }

@@ -1,5 +1,6 @@
 export default function reducer(state={
   loginVisible: false,
+  registerVisible: false,
   loginForm: {
     email: null,
     password: null
@@ -29,8 +30,16 @@ export default function reducer(state={
     case 'LOGOUT_RESPONSE_FULFILLED': {
       return{
         ...state,
-        auth:{...state.auth, access_token: null}
+        auth:{...state.auth, access_token: null, loggedIn: false}
       };
+    }
+
+    case 'SHOW_REGISTER_MODAL': {
+      return {...state, registerVisible: true, loggedIn: false};
+    }
+
+    case 'HIDE_REGISTER_MODAL': {
+      return {...state, registerVisible: false};
     }
 
     default:

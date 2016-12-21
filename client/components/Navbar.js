@@ -87,6 +87,67 @@ class LoginModal extends React.Component {
 
 }
 
+class RegisterModal extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: false,
+      username: '',
+      email: '',
+      password: '',
+    }
+    this.handleClose = this.handleClose.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleClose () {
+    this.props.hideRegisterModal();
+  }
+
+  handleChange() {
+    const username = this.refs.username.input.value;
+    const email = this.refs.email.input.value;
+    const password = this.refs.password.input.value;
+    // console.log(username, email, password)
+    
+    this.props.registerUser(username, email, password);
+    this.props.hideRegisterModal();
+  }
+
+
+  render() {
+    return (
+        <Dialog
+          title="Register"
+          modal={false}
+          open={this.props.sessions.registerVisible}
+          onRequestClose={this.handleClose}
+          contentStyle={styles.dialog}
+          style={styles.header}
+        >
+          <div>
+            <TextField ref="username"
+              floatingLabelText="Username"/>
+            <br />
+            <TextField ref="email"
+              floatingLabelText="Email"/>
+            <br />
+            <TextField
+              floatingLabelText="Password"
+              ref="password"
+              type="password"/>
+              <br />
+              <RaisedButton onClick={this.handleChange} label="Submit"
+                secondary={true}
+                style={styles.buttonStyle}
+              />
+          </div>
+        </Dialog>
+    );
+  }
+
+}
 
 
 class Navbar extends Component {
@@ -102,6 +163,7 @@ class Navbar extends Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.loginModal = this.loginModal.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.registerModal = this.registerModal.bind(this)
     // this.handleProfile = this.handleProfile.bind(this)
   }
 
@@ -118,6 +180,11 @@ class Navbar extends Component {
     this.props.logOut();
   }
 
+  registerModal() {
+    console.log('dasdasdd')
+    this.props.showRegisterModal();
+  }
+
   // handleProfile(event){
   //   event.preventDefault();
   //   this.contex.router.transitionTo('/users/:userId');
@@ -125,8 +192,14 @@ class Navbar extends Component {
 
   render() {
     const Login = (props) => (
-      <FlatButton onClick={this.loginModal} label="Login" />
+      <div>
+        <FlatButton onClick={this.loginModal} label="Login" />
+      </div>
     );
+
+    const Register = (props) => (
+      <FlatButton onClick={this.registerModal} label="Register" />
+    )
 
     const Logged = (props) => (
       <IconMenu
@@ -144,11 +217,12 @@ class Navbar extends Component {
     return (
       <div>
         <LoginModal {...this.props}/>
+        <RegisterModal {...this.props}/>
         <AppBar
           title={<Link to="/" style={ styles.navLink }>Home</Link>}
           showMenuIconButton={false}
           style={{backgroundColor: '#7C7877'}}
-          iconElementRight={this.props.sessions.auth.loggedIn ? <Logged /> : <Login />}
+          iconElementRight={this.props.sessions.auth.loggedIn ? <Logged /> : <div><Login /> <Register/></div>}
         />
       </div>
     );

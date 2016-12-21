@@ -14,6 +14,18 @@ export function hideLoginModal() {
   };
 }
 
+export function showRegisterModal() {
+  return {
+    type: 'SHOW_REGISTER_MODAL'
+  };
+}
+
+export function hideRegisterModal() {
+  return {
+    type: 'HIDE_REGISTER_MODAL'
+  };
+}
+
 export function sendLogin(email, password) {
   return function(dispatch) {
     axios.post('https://vr-museum-api.herokuapp.com/v1/login', {
@@ -31,6 +43,28 @@ export function sendLogin(email, password) {
   };
 }
 
+export function registerUser(username, email, password) {
+  console.log(username, email, password)
+  return function(dispatch) {
+    axios.post('https://vr-museum-api.herokuapp.com/v1/users', {
+      user: {
+        username : username,
+        email : email,
+        password : password
+      }
+    })
+      .then((response) => {
+        LocalStorage.login(response.data.access_token)
+        console.log(response);
+        dispatch({type: 'LOGIN_RESPONSE_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({type: 'LOGIN_RESPONSE_REJECTED', payload: err});
+      });
+  };
+}
+
 export function logOut() {
   LocalStorage.logout()
   browserHistory.push('/')
@@ -38,6 +72,7 @@ export function logOut() {
     type: 'LOGOUT_RESPONSE_FULFILLED'
   };
 }
+
 
 // export function showProfile(){
 //   return function(dispatch){

@@ -209,7 +209,7 @@ class Navbar extends Component {
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
       >
-        <Link to={`/users/${this.props.currentUser.user.user_id}`}><MenuItem primaryText="Profile" /></Link>
+        <Link to={`/users/${localStorage.getItem('user_id')}`}><MenuItem primaryText="Profile" /></Link>
         <MenuItem primaryText="Sign out" onClick={this.handleLogOut} />
       </IconMenu>
     );

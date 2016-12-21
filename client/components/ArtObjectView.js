@@ -1,10 +1,12 @@
 import React from 'react';
+import GoogleMapStart from './GoogleMap';
+
 
 class ArtObjectView extends React.Component {
 
   render() {
     return (
-      <h3>Art Object</h3>
+        <GoogleMapStart />
     );
   }
 

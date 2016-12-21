@@ -10,7 +10,7 @@ import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-
+import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 
 
 const styles = {
@@ -59,17 +59,20 @@ class AddToCollection extends React.Component {
   };
 
   addToCollection(collection_id){
-    this.props.addArtObjectToCollection(this.props.params.userId, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
+    const user_id = localStorage.getItem('user_id')
+    this.props.addArtObjectToCollection(user_id, this.props.artObjects.currentArtObject.id, collection_id, this.props.sessions.auth.access_token)
   }
 
   handleAdd(key) {
     const collectionTitle = this.refs.collectionTitle.input.value;
-    console.log(collectionTitle);
+    const user_id = localStorage.getItem('user_id')
 
     this.refs.collectionTitle.input.value = ''
     this.props.addNewCollection(collectionTitle, this.props.artObjects.currentArtObject.id)
-    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjects.currentArtObject.id)
-
+    var that = this;
+    window.setTimeout(function() {
+      that.props.getCollectionTitle(user_id, that.props.artObjects.currentArtObject.id)
+    }, 1000);
     // this.props.sendLogin(email, password);
     // this.props.hideLoginModal();
   }
@@ -94,7 +97,8 @@ class AddToCollection extends React.Component {
           targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
           onRequestClose={this.handleRequestClose.bind(this)}
         >
-          <Menu>
+          <Menu
+            initiallyKeyboardFocused={false}>
             {
               this.props.currentUser.user.collectionTitles.length > 0 ?
               this.props.currentUser.user.collectionTitles.map(function(title,i){
@@ -108,7 +112,7 @@ class AddToCollection extends React.Component {
           }
           <Divider />
           <div style={styles.addCollectionContainer}>
-            <h4 style={{marginBottom: 0}}>Create Collection</h4>
+            <h4 style={{marginBottom: 0}}></h4>
             <TextField ref="collectionTitle" style={{ width: '60%'}}/>
             <RaisedButton label="Add" primary={true} style={styles.addToCollectionButton} onClick={this.handleAdd.bind(this)} />
           </div>

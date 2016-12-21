@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCollectionTitle } from './usersCollectionActions'
 
 export function fetchCollections() {
   return function(dispatch) {
@@ -17,7 +18,7 @@ export function fetchCollections() {
 export function addNewCollection(title, primary_object_id) {
   return function(dispatch) {
     const authToken = localStorage.getItem('user_token')
-    const user_id = authToken.split(':')
+    const user_id = localStorage.getItem('user_id')
     axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${user_id}/collections`, { user_collection: {
       title: title,
       primary_object_id: primary_object_id,
@@ -27,8 +28,8 @@ export function addNewCollection(title, primary_object_id) {
         'Authorization': authToken
       }})
       .then((response) => {
-        console.log(response);
-        debugger;
+
+        
         // dispatch({type: 'ADD_NEW_COLLECTION_FULFILLED', payload: response.data});
       })
       .catch((err) => {

@@ -24,8 +24,10 @@ class ArtObjectCard extends React.Component {
   }
 
   sendArtObject() {
+    const userId = localStorage.getItem('user_id')
+    console.log(userId, '*********USERID*************')
     this.props.getArtObject(this.props.artObjectId);
-    this.props.getCollectionTitle(this.props.params.userId, this.props.artObjectId)
+    this.props.getCollectionTitle(userId, this.props.artObjectId)
   }
 
   render() {

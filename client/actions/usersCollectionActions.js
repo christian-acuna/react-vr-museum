@@ -22,7 +22,8 @@ export function getCollectionTitle(userId, art_object) {
 
 export function addArtObjectToCollection(userId,art_object_id,collection_id,access_token) {
   return function(dispatch) {
-    axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${userId}/collections/${collection_id}/art_objects`, {art_object_id: art_object_id},
+    console.log(userId,art_object_id,collection_id,access_token, '******$*$*')
+    axios.post(`https://vr-museum-api.herokuapp.com/v1/users/${userId}/collections/${collection_id}/art_objects`, { art_object_id: art_object_id },
       { headers: {
         'Authorization': access_token
       }}

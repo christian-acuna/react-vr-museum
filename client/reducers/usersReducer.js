@@ -10,11 +10,12 @@ export default function reducer(state={
   switch (action.type) {
 
     case 'LOGIN_RESPONSE_FULFILLED': {
+      console.log(action.payload.id,"ppppppppppppp")
         return {
           ...state,
           user: {...state.user, email: action.payload.email,
                                 username: action.payload.username,
-                                user_id:  action.payload.user_id
+                                user_id:  action.payload.id
                               },
         };
       }

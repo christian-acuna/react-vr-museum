@@ -7,6 +7,8 @@ import Dialog from 'material-ui/Dialog';
 
 import AddToCollection from './AddToCollection'
 
+import GoogleMapStart from './GoogleMap';
+
 
 
 const styles = {
@@ -21,7 +23,7 @@ const styles = {
     overflowY: 'auto',
   },
   dialog: {
-    width: '60%',
+    width: '70%',
     maxWidth: 'none',
   }
 };
@@ -79,6 +81,7 @@ class ArtObjectsGrid extends React.Component {
             <GridTile>
               <img src={this.props.artObjects.currentArtObject.image_url} />
             </GridTile>
+              <GoogleMapStart />
           </GridList>
           {
             this.props.sessions.auth.loggedIn ?
@@ -86,6 +89,7 @@ class ArtObjectsGrid extends React.Component {
             :
             <h3 style={{float: 'right'}}>Login to add to your collection</h3>
           }
+
 
         </Dialog>
 

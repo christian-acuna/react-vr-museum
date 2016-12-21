@@ -21,6 +21,10 @@ const styles = {
     overflowY: 'auto',
     color: 'gray'
   },
+  tileFont:{
+    fontFamily: 'Roboto',
+    padding: '40px',
+  }
 };
 
 class UserProfile extends React.Component {
@@ -50,8 +54,8 @@ class UserProfile extends React.Component {
 
   render() {
     return(
-    	<div>
-	      <h2>User Profile</h2>
+    	<div style={styles.tileFont}>
+	      <h2 > User Profile</h2>
 	    	<ListItem
       disabled={true}
       leftAvatar={

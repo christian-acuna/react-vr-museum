@@ -219,7 +219,12 @@ class Navbar extends Component {
         <LoginModal {...this.props}/>
         <RegisterModal {...this.props}/>
         <AppBar
-          title={<Link to="/" style={ styles.navLink }>Home</Link>}
+          title={<div>
+            <Link to="/" style={ styles.navLink }>Home  </Link>
+            <Link to="/collections"><FlatButton label="   Collections" style={ styles.navLink } /></Link>
+            <Link to="/artobjects"><FlatButton label="Art Pieces" style={ styles.navLink } /></Link>
+            </div>}
+
           showMenuIconButton={false}
           style={{backgroundColor: '#7C7877'}}
           iconElementRight={this.props.sessions.auth.loggedIn ? <Logged /> : <div><Login /> <Register/></div>}

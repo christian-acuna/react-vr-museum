@@ -28,7 +28,7 @@ export function addNewCollection(title, primary_object_id) {
         'Authorization': authToken
       }})
       .then((response) => {
-
+        console.log(response)
         
         // dispatch({type: 'ADD_NEW_COLLECTION_FULFILLED', payload: response.data});
       })

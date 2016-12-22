@@ -2,7 +2,8 @@ export default function reducer(state={
     collections: [],
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
+    showCreateCollection:false
   }, action) {
 
     switch (action.type) {

@@ -11,6 +11,7 @@ import CollectionGrid from './components/CollectionGrid';
 import UserProfile from './components/UserProfile';
 import UserCollectionGrid from './components/UserCollectionGrid'
 import ArtObjectView from './components/ArtObjectView'
+import Home from './components/Home'
 
 //react-redux
 import { Provider } from 'react-redux';
@@ -24,7 +25,9 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={MainLayout}>
-        <IndexRoute component={CollectionGrid}></IndexRoute>
+        <IndexRoute component={ Home }></IndexRoute>
+
+        <Route path="/collections" component={ CollectionGrid }></Route>
         <Route path="/users/:userId" component={ UserProfile }></Route>
         <Route path="/users/:userId/collections/:collectionId" component={ UserCollectionGrid }></Route>
         <Route path="/art_objects/:artObjectId" component={ ArtObjectView }></Route>

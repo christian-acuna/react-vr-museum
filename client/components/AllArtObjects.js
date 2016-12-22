@@ -35,7 +35,7 @@ class AllArtObjects extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        currentArtObject: []
+        allArtObjects: []
     }
     // this.handleOpen = this.handleOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -57,7 +57,7 @@ class AllArtObjects extends React.Component {
 
 
   renderDefault() {
-    return this.props.artObjects.map((artObject, i) => (
+    return this.props.artObjects.allArtObjects.map((artObject, i) => (
       <AllArtObjectCard
         key={i}
         artObjectId={artObject.id}

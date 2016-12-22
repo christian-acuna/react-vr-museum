@@ -26,7 +26,6 @@ const router = (
     <Router history={history}>
       <Route path="/" component={MainLayout}>
         <IndexRoute component={ Home }></IndexRoute>
-
         <Route path="/collections" component={ CollectionGrid }></Route>
         <Route path="/users/:userId" component={ UserProfile }></Route>
         <Route path="/users/:userId/collections/:collectionId" component={ UserCollectionGrid }></Route>

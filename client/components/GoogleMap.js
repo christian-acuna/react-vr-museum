@@ -105,10 +105,10 @@ export default class GettingStartedExample extends Component {
       <div style={{height: '100%', width: '100%'}}>
         <GettingStartedGoogleMap
           containerElement={
-            <div style={{ height: '100px', width: '100px' }} />
+            <div style={this.props.styleObject} />
           }
           mapElement={
-            <div style={{ height: '300px', width: '300px' }} />
+            <div style={this.props.styleObject} />
           }
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}

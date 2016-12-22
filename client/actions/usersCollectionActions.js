@@ -53,3 +53,9 @@ export function addArtObjectToCollection(userId,art_object_id,collection_id,acce
       });
   };
 }
+
+export function hideForm() {
+  return {
+    type: 'HIDE_FORM'
+  }
+}

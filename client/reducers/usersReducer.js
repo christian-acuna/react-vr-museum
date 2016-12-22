@@ -4,7 +4,8 @@ export default function reducer(state={
     username: null,
     user_id: null,
     collectionTitles: [],
-    collections:[]
+    collections:[],
+    showCreateCollection:false
   },
 }, action) {
 
@@ -40,6 +41,13 @@ export default function reducer(state={
         return state;
       }
 
+      case 'HIDE_FORM':{
+        return {
+          ...state,
+          showCreateCollection: false,
+        }
+      }
+      
     default:
       return state;
   }

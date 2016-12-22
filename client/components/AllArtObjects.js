@@ -90,14 +90,17 @@ class AllArtObjects extends React.Component {
             </GridTile>
               <GoogleMapStart />
           </GridList>
+          <div>
+          <p>{this.props.artObjects.currentArtObject.description}</p>
           {
             this.props.sessions.auth.loggedIn ?
             <AddToCollection {...this.props}/>
             :
             <h3 style={{float: 'right'}}>Login to add to your collection</h3>
+
           }
 
-
+          </div>
         </Dialog>
 
         <GridList

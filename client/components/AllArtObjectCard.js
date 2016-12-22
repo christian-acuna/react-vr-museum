@@ -38,7 +38,7 @@ class AllArtObjectCard extends React.Component {
         onClick={this.sendArtObject}
         key={this.props.artObjectId}
         title={this.props.title}
-        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+        description={this.props.description}
         actionPosition="left"
          titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
         >

@@ -17,6 +17,7 @@ const styles = {
   navLink: {
     color: 'white',
     textDecoration: 'none',
+    marginTop: '6px',
   },
   dialog: {
     width: '30%',

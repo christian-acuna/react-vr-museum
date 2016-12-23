@@ -39,6 +39,11 @@ class ArtObjectCard extends React.Component {
         key={this.props.artObjectId}
         title={this.props.title}
         description={this.props.description}
+
+        place={this.props.place}
+        medium={this.props.medium}
+        museum={this.props.meseum}
+
         actionPosition="left"
          titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
         >

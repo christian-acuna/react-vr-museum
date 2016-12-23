@@ -35,10 +35,10 @@ module.exports = {
     },
     // CSS
     {
-      test: /\.styl$/,
-      include: path.join(__dirname, 'client'),
-      loader: 'style-loader!css-loader!stylus-loader'
-    }
+        test: /\.css?$/,
+        exclude: /node_modules/,
+        loaders: ['style', 'css'] // same as "style-loader!css-loader"
+      }
     ]
   }
 };

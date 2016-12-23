@@ -111,7 +111,7 @@ class RegisterModal extends React.Component {
     const email = this.refs.email.input.value;
     const password = this.refs.password.input.value;
     // console.log(username, email, password)
-    
+
     this.props.registerUser(username, email, password);
     this.props.hideRegisterModal();
   }
@@ -201,7 +201,7 @@ class Navbar extends Component {
     )
 
     const Logged = (props) => (
-      <IconMenu 
+      <IconMenu
       iconButtonElement={
       <IconButton style={{color:'white'}}><MoreVertIcon /></IconButton>
         }
@@ -225,7 +225,7 @@ class Navbar extends Component {
             </div>}
 
           showMenuIconButton={false}
-          style={{backgroundColor: '#7C7877'}}
+          style={{backgroundColor: '#37474F'}}
           iconElementRight={this.props.sessions.auth.loggedIn ? <Logged /> : <div><Login /> <Register/></div>}
         />
       </div>

@@ -31,7 +31,7 @@ class SearchBar extends Component{
 		return(
 				<div>
 					<TextField
-      			floatingLabelText="Search art or collections"
+      			floatingLabelText="Search Collections"
 						// floatingLabelStyle={styles.floatingLabel}
 						underlineFocusStyle={styles.underlineStyle}
 						value={this.state.term}

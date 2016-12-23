@@ -53,7 +53,7 @@ class Home extends React.Component {
       <div className="pack-page page0">
         <QueueAnim className="home-title">
           <div className="page-title" key="title">
-            <p>hI!</p>
+              <img src="https://res.cloudinary.com/derwsphzd/image/upload/v1482453561/vMUSE_logo_highres2-02_wtmgvg.png" alt=""/>
           </div>
           <div className="page-description" key="c">
             <p>The simple demo</p>
@@ -121,7 +121,6 @@ class Home extends React.Component {
       </ScrollOverPack>
     </div>
       // <div style={styles.root}>
-      //   <div style={{ marginTop: '-70px'}}><img src="https://res.cloudinary.com/derwsphzd/image/upload/v1482453561/vMUSE_logo_highres2-02_wtmgvg.png" alt=""/></div>
       //   <div style={rootDivStyle}>
       //     <AtvImg
       //       layers={[

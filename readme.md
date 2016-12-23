@@ -1,6 +1,6 @@
-# Learn Redux
+# [vMUSE] (http://vr-react-museum.herokuapp.com/)react front-end
 
-A simple React + Redux implementation. This will be turned into a free video series once the app is totally fleshed out.
+* [github page] (https://github.com/christian-acuna/vr-museum-api/blob/development/README.md)
 
 ## Running
 

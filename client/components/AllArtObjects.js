@@ -90,9 +90,9 @@ class AllArtObjects extends React.Component {
             </GridTile>
 
             <div>
+              <p>Artist: {this.props.artObjects.currentArtObject.artist}</p>
               <p>Place: {this.props.artObjects.currentArtObject.place}</p>
-              <p>Medium: {this.props.artObjects.currentArtObject.medium.medium_type}</p>
-              <p>Museum: {this.props.artObjects.currentArtObject.museum.name}</p>
+              <p>Date: {this.props.artObjects.currentArtObject.date}</p>
               <p>Description: {this.props.artObjects.currentArtObject.description}</p>
               </div>
           </GridList>

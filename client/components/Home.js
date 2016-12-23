@@ -18,7 +18,8 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     maxWidth: '1400px',
-    marginLeft: '300px',
+    marginLeft: '100px',
+    marginRight: '100px',
     // margin: '0 auto',
     justifyContent: 'center',
   },
@@ -81,13 +82,13 @@ class Home extends React.Component {
                   'https://lh5.ggpht.com/p1wTtNm7TSDtleExnv5Gxg8sJ66ed6u6MXZW-Q6onee_CCNgD2z4e7ce09fRIR9_eEReBXGKCGwukwY4WOIqGlsI5ZY=s0'
                 ]}
                 staticFallback="http://kloc.pm/images/kloc-icon-flattened.jpg"
-                style={{ width: 620, height: 590 }}
+                style={{ width: 520, height: 490 }}
               />
 
             </div>
             <div style={styles.map}>
               <h1>View Art From Around the World</h1>
-              <GoogleMapStart styleObject={{ height: '590px', width: '620px' }} />
+              <GoogleMapStart styleObject={{ height: '490px', width: '520px' }} />
             </div>
 
           </div>

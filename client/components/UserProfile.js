@@ -106,7 +106,6 @@ class UserProfile extends React.Component {
   }
   handleClick(){
   window.location.assign(`https://vmuse-vr.herokuapp.com/users/${localStorage.user_id}/collections`)
-
   }
 
   render() {

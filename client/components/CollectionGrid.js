@@ -5,6 +5,7 @@ import CollectionCard from './CollectionCard';
 import SearchInput, {createFilter} from 'react-search-input'
 import SearchBar from './SearchBar'
 import axios from 'axios';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const styles = {
   root: {
@@ -21,7 +22,13 @@ const styles = {
   },
   map: {
     // width: '50%'
-  }
+  },
+ 
+  button:{
+    display:'block',
+    margin: '0 auto',
+    width: '40%',
+  },
 };
 
 const rootDivStyle = {
@@ -94,6 +101,10 @@ class CollectionGrid extends React.Component {
     ))
   }
 
+  handleClick(){
+    window.location.assign(`https://vmuse-vr.herokuapp.com`)
+      
+    }
 
   render() {
     return (
@@ -101,6 +112,17 @@ class CollectionGrid extends React.Component {
         <div>
           <SearchBar onSearchTermChange={term=>this.collectionSearch(term)}/>
         </div>
+        <div style={styles.tileFont}>
+        <RaisedButton 
+              
+              label={`Enter VR`} 
+              primary={true} style={styles.button} 
+              onClick={this.handleClick}
+
+              />
+              </div>
+          <br />
+          <br />
         <div style={styles.root}>
 
 

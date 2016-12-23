@@ -10,6 +10,8 @@ import CollectionCard from './CollectionCard';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { Link } from 'react-router';
+
 
 const username = localStorage.username
 
@@ -102,10 +104,22 @@ class UserProfile extends React.Component {
   		showCreateCollection: false
   	})
   }
+  handleClick(){
+  window.location.assign(`https://gentle-retreat-93323.herokuapp.com/users/${localStorage.user_id}/collections`)
+    
+  }
 
   render() {
     return(
     	<div style={styles.tileFont}>
+      <RaisedButton 
+              label={`Enter VR`} 
+              primary={true} style={styles.button} 
+              onClick={this.handleClick}
+
+              />
+          <br />
+          <br />
 	      
 	  	    <RaisedButton 
 	  	    		label={`Create a new collection ${username}`} 

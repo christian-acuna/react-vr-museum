@@ -105,7 +105,7 @@ class UserProfile extends React.Component {
   	})
   }
   handleClick(){
-  window.location.assign(`https://gentle-retreat-93323.herokuapp.com/users/${localStorage.user_id}/collections`)
+  window.location.assign(`https://vmuse-vr.herokuapp.com/users/${localStorage.user_id}/collections`)
     
   }
 

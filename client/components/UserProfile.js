@@ -89,7 +89,7 @@ class UserProfile extends React.Component {
   		showCreateCollection: true
   	})
   }
-  
+
   handleChange() {
   	const title = this.refs.title.input.value;
   	const description = this.refs.description.input.value;
@@ -105,25 +105,25 @@ class UserProfile extends React.Component {
   	})
   }
   handleClick(){
-  window.location.assign(`https://gentle-retreat-93323.herokuapp.com/users/${localStorage.user_id}/collections`)
-    
+  window.location.assign(`https://vmuse-vr.herokuapp.com/users/${localStorage.user_id}/collections`)
+
   }
 
   render() {
     return(
     	<div style={styles.tileFont}>
-      <RaisedButton 
-              label={`Enter VR`} 
-              primary={true} style={styles.button} 
+      <RaisedButton
+              label={'Enter VR'}
+              primary={true} style={styles.button}
               onClick={this.handleClick}
 
               />
           <br />
           <br />
-	      
-	  	    <RaisedButton 
-	  	    		label={`Create a new collection ${username}`} 
-	  	    		primary={true} style={styles.button} 
+
+	  	    <RaisedButton
+	  	    		label={`Create a new collection ${username}`}
+	  	    		primary={true} style={styles.button}
 	  	    		onClick={this.showForm}
 
 	  	    		/>
@@ -131,7 +131,7 @@ class UserProfile extends React.Component {
 	  	    <br />
 
 	  	    {
-	  	    	this.state.showCreateCollection ? 
+	  	    	this.state.showCreateCollection ?
 	  	    	<div style={{margin: '0 auto', width: '17%', textAlign: 'center'}}>
 	            <TextField ref="title"
 	              floatingLabelText="Title"/>
@@ -145,10 +145,10 @@ class UserProfile extends React.Component {
 	                secondary={true}
 	                style={styles.buttonStyle}
 	              />
-          	</div> 
+          	</div>
 
 
-	  	    	: 
+	  	    	:
 				    	<div style={styles.root}>
 					    	<GridList
 					          cellHeight={400}

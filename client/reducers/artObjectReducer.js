@@ -1,5 +1,6 @@
 export default function reducer(state={
     currentArtObject: [],
+    allArtObjects: [],
     showModal: false,
     fetching: false,
     fetched: false,
@@ -27,6 +28,9 @@ export default function reducer(state={
       }
       case 'ADD_ART_OBJECT_TO_COLLECTION_FULFILLED':{
         return state
+      }
+      case 'FETCH_ALL_OBJECTS': {
+        return {...state, fetched: true, allArtObjects: action.payload}
       }
     }
     return state

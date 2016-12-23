@@ -10,13 +10,16 @@ import TweenOne from 'rc-tween-one';
 import Animate from 'rc-animate';
 const ScrollOverPack = ScrollAnim.OverPack;
 import cssStyles from '../styles/styles.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Link } from 'react-router'
 
 const styles = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    maxWidth: '1200px',
-    margin: '0 auto',
+    maxWidth: '1400px',
+    marginLeft: '300px',
+    // margin: '0 auto',
     justifyContent: 'center',
   },
   gridList: {
@@ -24,8 +27,13 @@ const styles = {
     height: '100%',
     overflowY: 'auto',
   },
-  map: {
-    // width: '50%'
+  buttonContainer: {
+    textAlign: 'center'
+  },
+  buttons: {
+    margin: 12,
+    width: '80%',
+    marginTop: '20px'
   }
 };
 
@@ -53,10 +61,7 @@ class Home extends React.Component {
       <div className="pack-page page0">
         <QueueAnim className="home-title">
           <div className="page-title" key="title">
-              <img src="https://res.cloudinary.com/derwsphzd/image/upload/v1482453561/vMUSE_logo_highres2-02_wtmgvg.png" alt=""/>
-          </div>
-          <div className="page-description" key="c">
-            <p>The simple demo</p>
+              <img style={{ width: '70%', height: 'auto' }} src="https://res.cloudinary.com/derwsphzd/image/upload/v1482453561/vMUSE_logo_highres2-02_wtmgvg.png" alt=""/>
           </div>
         </QueueAnim>
       </div>
@@ -66,32 +71,39 @@ class Home extends React.Component {
         hideProps={{ 0: { reverse: true } }}
       >
         <TweenOne className="tween-one" key="0" animation={{ opacity: 1 }}>
-          默认进入与出场
+          View Art From Around the World
         </TweenOne>
         <QueueAnim key="1">
-          <div key="0" className="demo"></div>
-          <div key="1" className="demo" style={{ backgroundColor: '#F38EAD' }}></div>
-          <div key="2" className="demo"></div>
-          <div key="3" className="demo"></div>
+          <div style={styles.root}>
+            <div style={rootDivStyle}>
+              <AtvImg
+                layers={[
+                  'https://lh5.ggpht.com/p1wTtNm7TSDtleExnv5Gxg8sJ66ed6u6MXZW-Q6onee_CCNgD2z4e7ce09fRIR9_eEReBXGKCGwukwY4WOIqGlsI5ZY=s0'
+                ]}
+                staticFallback="http://kloc.pm/images/kloc-icon-flattened.jpg"
+                style={{ width: 620, height: 590 }}
+              />
+
+            </div>
+            <div style={styles.map}>
+              <h1>View Art From Around the World</h1>
+              <GoogleMapStart styleObject={{ height: '590px', width: '620px' }} />
+            </div>
+
+          </div>
         </QueueAnim>
       </ScrollOverPack>
 
       <ScrollOverPack
         scrollEvent={this.scrollEvent}
         className="pack-page page2"
-        style={{ backgroundColor: '#0098CE' }} always={false}
+        style={{ backgroundColor: '#ede0ce' }} always={false}
         id="page2"
         hideProps={{ title: { reverse: true } }}
       >
         <TweenOne key="title" animation={{ opacity: 0, type: 'from' }} className="page2-title">
-          只进入一次
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/IpjyW_xdDrY" frameborder="0" allowfullscreen></iframe>
         </TweenOne>
-        <Animate key="0" transitionName="fade" transitionAppear>
-          <div className="demo2"></div>
-        </Animate>
-        <TweenOne className="demo2" animation={{ y: 0, opacity: 1 }} key="1"
-          style={{ transform: 'translateY(100px)', opacity: 0 }}
-        />
       </ScrollOverPack>
 
       <ScrollOverPack
@@ -107,37 +119,23 @@ class Home extends React.Component {
           key="title"
           className="page2-title"
         >
-          在页面80％时进入
+          Explore Now
         </TweenOne>
         <Animate key="0" transitionName="fade" transitionAppear>
-          <div className="demo"></div>
+          <div style={styles.buttonContainer} className="demo"><Link to='/artobjects'><RaisedButton label="View Art" style={styles.buttons} /></Link></div>
         </Animate>
         <TweenOne
           className="demo"
           animation={{ y: 0, opacity: 1 }}
           key="1"
           style={{ transform: 'translateY(100px)', opacity: 0 }}
-        />
+        > <div style={styles.buttonContainer} className="demo"><Link to='/collections'>
+          <RaisedButton primary={true} label="View Collections" style={styles.buttons} />
+        </Link></div>
+      </TweenOne>
       </ScrollOverPack>
     </div>
-      // <div style={styles.root}>
-      //   <div style={rootDivStyle}>
-      //     <AtvImg
-      //       layers={[
-      //         'http://lh4.ggpht.com/hr2NvVMJ1_ER4X-LeyHDBOaKm4aorUB4HaXtrb8JoZwtqZb6xsCnvaBT9r4SQiKK5svwtR0JwQUcYjmqhw71Hx9wfc8=s0',
-      //         // 'http://kloc.pm/images/front.png',
-      //       ]}
-      //       staticFallback="http://kloc.pm/images/kloc-icon-flattened.jpg"
-      //       style={{ width: 420, height: 590 }}
-      //     />
-      //
-      //   </div>
-      //   <div style={styles.map}>
-      //     <h1>View Art From Around the World</h1>
-      //     <GoogleMapStart styleObject={{ height: '500px', width: '500px' }} />
-      //   </div>
-      //
-      // </div>
+
       );
     }
 

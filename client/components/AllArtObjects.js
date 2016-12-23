@@ -88,10 +88,15 @@ class AllArtObjects extends React.Component {
             <GridTile>
               <img src={this.props.artObjects.currentArtObject.image_url} />
             </GridTile>
-              <GoogleMapStart />
+
+            <div>
+              <p>Place: {this.props.artObjects.currentArtObject.place}</p>
+              <p>Medium: {this.props.artObjects.currentArtObject.medium.medium_type}</p>
+              <p>Museum: {this.props.artObjects.currentArtObject.museum.name}</p>
+              <p>Description: {this.props.artObjects.currentArtObject.description}</p>
+              </div>
           </GridList>
           <div>
-          <p>{this.props.artObjects.currentArtObject.description}</p>
           {
             this.props.sessions.auth.loggedIn ?
             <AddToCollection {...this.props}/>

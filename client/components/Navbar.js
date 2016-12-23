@@ -192,19 +192,17 @@ class Navbar extends Component {
 
   render() {
     const Login = (props) => (
-      <div>
-        <FlatButton onClick={this.loginModal} label="Login" />
-      </div>
+        <FlatButton onClick={this.loginModal} label="Login" style={ styles.navLink }/>
     );
 
     const Register = (props) => (
-      <FlatButton onClick={this.registerModal} label="Register" />
+      <FlatButton onClick={this.registerModal} label="Register" style={ styles.navLink } />
     )
 
     const Logged = (props) => (
-      <IconMenu
+      <IconMenu 
       iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
+      <IconButton style={{color:'white'}}><MoreVertIcon /></IconButton>
         }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}

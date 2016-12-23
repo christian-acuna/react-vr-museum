@@ -40,6 +40,7 @@ class Home extends React.Component {
   render() {
     return (
       <div style={styles.root}>
+        <div><img src="https://res.cloudinary.com/derwsphzd/image/upload/v1482453561/vMUSE_logo_highres2-02_wtmgvg.png" alt=""/></div>
         <div style={rootDivStyle}>
           <AtvImg
             layers={[

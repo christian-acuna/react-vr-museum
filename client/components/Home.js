@@ -103,7 +103,7 @@ class Home extends React.Component {
         hideProps={{ title: { reverse: true } }}
       >
         <TweenOne key="title" animation={{ opacity: 0, type: 'from' }} className="page2-title">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/IpjyW_xdDrY" frameborder="0" allowfullscreen></iframe>
+          <iframe width="760" height="415" src="https://www.youtube.com/embed/hBKNB523G1c" frameborder="0" allowfullscreen></iframe>
         </TweenOne>
       </ScrollOverPack>
 

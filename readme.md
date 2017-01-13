@@ -1,4 +1,4 @@
-# [vMUSE] (http://vr-react-museum.herokuapp.com/) react front-end
+# [vMUSE] (http://vr-react-museum.herokuapp.com/) Rails back-end
 
 # Authored by
 

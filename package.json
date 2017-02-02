@@ -1,5 +1,5 @@
 {
-  "name": "VR-React",
+  "name": "vMuse React-Redux",
   "version": "1.0.0",
   "description": "Experience the world’s most exclusive art collections through virtual reality environments.",
   "scripts": {
@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wesbos/Learn-Redux.git"
+    "url": "https://github.com/christian-acuna/react-vr-museum"
   },
-  "author": "Wes Bos",
+  "author": "Christian Acuña, Laura Reynolds, Parinaz Khosraviani, John Winslow, Ashley Humphrey",
   "license": "MIT",
-  "homepage": "https://github.com/wesbos/Learn-Redux",
+  "homepage": "https://vr-react-museum.herokuapp.com/",
   "dependencies": {
     "axios": "^0.15.3",
     "babel-core": "^6.7.7",

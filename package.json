@@ -1,7 +1,7 @@
 {
-  "name": "learn-redux",
+  "name": "VR-React",
   "version": "1.0.0",
-  "description": ":) ",
+  "description": "Experience the world’s most exclusive art collections through virtual reality environments.",
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",

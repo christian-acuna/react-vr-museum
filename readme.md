@@ -11,7 +11,7 @@ Explore art from around the world in VR by creating your own collection of art f
 ![addtocollection](https://cloud.githubusercontent.com/assets/7112158/22572695/2e4fcda6-e95a-11e6-8c5e-ef756eb81545.gif)
 
 ### View all collections in VR with just a single click
-![view-vr](http://i.giphy.com/26gshpCkN5lU5Rs4M.gif)
+![vrmode](https://cloud.githubusercontent.com/assets/7112158/22573082/1291ee44-e95c-11e6-8189-5a82784e54b4.gif)
 
 # Created by
 

@@ -60,3 +60,9 @@ client folder
 * `reducers` - reducers are created here and combined in index.js
 * `store.js` - creation of store with middleware and enhancers
 * `styles` - stylesheets imported in main.js
+
+## Contribute
+
+Visit development [Trello board](https://trello.com/b/LiRzwONW/vr-museum) or email christian.miguel.acuna@gmail.com
+
+![Trello Development](https://cloud.githubusercontent.com/assets/7112158/22575009/bb1a62c0-e967-11e6-8b37-c60babd7c31e.png)

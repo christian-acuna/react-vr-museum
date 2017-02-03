@@ -7,13 +7,14 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Components
 import MainLayout from './components/MainLayout';
+import Home from './components/Home'
+
 import CollectionGrid from './components/CollectionGrid';
+import AllArtObjects from './components/AllArtObjects'
 import UserProfile from './components/UserProfile';
 import UserCollectionGrid from './components/UserCollectionGrid'
-import ArtObjectView from './components/ArtObjectView'
-import Home from './components/Home'
 import ArtObjectsGrid from './components/ArtObjectsGrid'
-import AllArtObjects from './components/AllArtObjects'
+import ArtObjectView from './components/ArtObjectView'
 
 //react-redux
 import { Provider } from 'react-redux';

@@ -35,3 +35,28 @@ Then run `npm start` and open <localhost:7770> in your browser.
 ## Production Build
 
 Run `npm run build` and run `git push heroku development:master`
+
+## Structure
+
+Root Directory
+* `Procfile` - for heroku
+* `client` - where source code for app lives (see below for details)
+* `devServer.js` - server for development
+* `dist` - distribution folder, npm run buld cleans and generates this folder
+* `index.html` - main HTML page
+* `node_modules` - third-party libraries managed by package.json and npm
+* `package.json` - config file for npm and holds various metadata relevant to the project
+* `prodServer.js` - production server used on heroku
+* `readme.md`
+* `webpack.config.dev.js` - development webpack config
+* `webpack.config.prod.js` - production webpack config
+
+
+client folder
+* `actions` - action creators are stored here
+* `components` - React components
+* `helpers` - helper function for authentication (login/logout) using local storage
+* `main.js` - entry point for React app, where the routes are defined, store is imported
+* `reducers` - reducers are created here and combined in index.js
+* `store.js` - creation of store with middleware and enhancers
+* `styles` - stylesheets imported in main.js

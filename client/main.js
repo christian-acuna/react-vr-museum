@@ -14,6 +14,7 @@ import ArtObjectView from './components/ArtObjectView'
 import Home from './components/Home'
 import ArtObjectsGrid from './components/ArtObjectsGrid'
 import AllArtObjects from './components/AllArtObjects'
+
 //react-redux
 import { Provider } from 'react-redux';
 
@@ -23,9 +24,9 @@ import store, { history } from './store';
 
 
 const router = (
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={MainLayout}>
+  <Provider store={ store }>
+    <Router history={ history }>
+      <Route path="/" component={ MainLayout }>
         <IndexRoute component={ Home }></IndexRoute>
         <Route path="/collections" component={ CollectionGrid }></Route>
         <Route path="/artobjects" component={ AllArtObjects }></Route>
@@ -36,7 +37,5 @@ const router = (
     </Router>
   </Provider>
 );
-
-
 
 render(router, document.getElementById('root'));

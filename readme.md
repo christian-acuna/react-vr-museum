@@ -61,6 +61,10 @@ client folder
 * `store.js` - creation of store with middleware and enhancers
 * `styles` - stylesheets imported in main.js
 
+## API Schema
+
+![API Schema](https://cloud.githubusercontent.com/assets/7112158/22575103/622e1bb0-e968-11e6-872c-56de580dd523.png)
+
 ## Contribute
 
 Visit development [Trello board](https://trello.com/b/LiRzwONW/vr-museum) or email christian.miguel.acuna@gmail.com
